@@ -19,7 +19,6 @@ class Flare(object):
             PIL: Image with randomly generated lens flare effect.
         """
         img = np.array(img)
-        #cv2.imwrite("before.png", img)
         h, w, _ = img.shape
 
         overlay = img.copy()
@@ -36,8 +35,6 @@ class Flare(object):
           cv2.circle(overlay, center, np.random.randint(max_r), (c,c,c), -1)
 
         img = cv2.addWeighted(overlay, alpha, img, 1-alpha, 0)
-
-        #cv2.imwrite("after.png", img)
         img = Image.fromarray(img)
 
         return img
